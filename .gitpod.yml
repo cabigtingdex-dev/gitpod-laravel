@@ -1,0 +1,10 @@
+image:
+    file: .gitpod.Dockerfile
+tasks:
+  - init: 'composer create-project laravel/laravel laravue'
+ports:
+  - port: 3000
+    onOpen: open-preview
+vscode:
+    extensions:
+      - felixfbecker.php-debug
