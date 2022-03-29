@@ -20,7 +20,7 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        return new BookResource($books);
+        return BookResource::collection($books);
     }
 
     /**
