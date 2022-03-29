@@ -27,6 +27,7 @@ class UpdateBookRequest extends FormRequest
             'title' => ['string', 'min:5', 'max:100'],
             'author' => ['string', 'min:5', 'max:100'],
             'category' => ['string', 'min:5', 'max:100'],
+            'description' => ['string', 'min:5', 'max:100'],
             'publishing_house' => ['string', 'min:5', 'max:100'],
             'publishing_date' => ['date']
         ];
