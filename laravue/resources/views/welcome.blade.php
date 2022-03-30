@@ -12,5 +12,5 @@
 
         </div>
     </body>
-    <script src="/resources/js/app.js"> </script>
+    <script src="/js/app.js"></script>
 </html>
