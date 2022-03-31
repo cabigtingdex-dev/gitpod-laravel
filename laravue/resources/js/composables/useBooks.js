@@ -13,7 +13,7 @@ function useBook() {
         catch (err){
           console.log(err.message)
         }
-      }
+    }
 
     const getBook = async (id) => {
         try {
@@ -25,7 +25,27 @@ function useBook() {
         }
     }
 
-    return { books, book, getBooks, getBook}
+    const insertBook = async (formData) => {
+      try{     
+          let response = await axios.post("/api/books", formData)
+          return response.data.data
+      }
+      catch(err){
+          console.log(err)
+      }
+    }
+
+    const deleteBook = async (id) => {
+      try {
+          await axios.delete("/api/books/" + id)
+          getBooks()
+      }
+      catch (err){
+          console.log(err)
+      }
+  }
+
+    return { books, book, getBooks, getBook, insertBook, deleteBook }
 }
 
 export default useBook

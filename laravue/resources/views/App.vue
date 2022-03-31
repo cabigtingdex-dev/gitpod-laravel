@@ -18,6 +18,7 @@ export default {
     --process-button: rgb(45, 175, 45);
     --hot-button: red;
     --div-color: #eee;
+    --hovered: greenyellow;
   }
   body{
     background: #bfb;
@@ -25,6 +26,9 @@ export default {
   }
   h2{
     text-align: center;
+  }
+  .centered{
+    margin: 0 auto;
   }
   *{
     font-family: Helvetica;

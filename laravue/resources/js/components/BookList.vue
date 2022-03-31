@@ -5,30 +5,45 @@
                 <h2> Books </h2>
             </li>
             <li>
-                <button class="add-book-btn v-center"> Add a Book </button>
+                <button @click="showBookAddForm" class="add-book-btn v-center"> Add a Book </button>
             </li>
         </ul>
         <ul class="book-list-container">
-            <li @click="selectBook(book.id)" v-for="book in books" :key="book.id" class="book">
+            <li @click="selectBook(book.id)" 
+            v-for="book in books" :key="book.id" 
+            class="book" :class="{ selected: selectedBook.id === book.id }">
                 <h3> {{ book.title }} </h3>
-                <p> {{ book.author }} </p>
+                <div class="book-righthand">
+                    <p> {{ book.author }} </p>
+                    <button class="book-edit-btn"> Edit   </button>
+                    <button @click.stop="deleteBook(book.id)" class="book-delete-btn"> Delete </button>
+                </div>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
-
+import { ref } from 'vue'
 
 export default {
-    props: [ 'books' ],
-    emits: [ 'bookClick' ],
+    props: [ 'books', 'selectedBook' ],
+    emits: [ 'bookClick', 'showBookAddForm', 'bookDelete' ],
     setup(props, { emit }){
         const selectBook = (id) => {
-            emit('bookClick', id)
+            if(props.selectedBook.id !== id){
+                emit('bookClick', id)
+            }
+        }
+        const showBookAddForm = () => {
+            emit('showBookAddForm')
         }
 
-        return { selectBook }
+        const deleteBook = (id) => {
+            emit('bookDelete', id)
+        }
+
+        return { selectBook, showBookAddForm, deleteBook }
     }
 }
 </script>
@@ -67,6 +82,27 @@ export default {
         padding: 0 5px;
     }
     .book:hover{
-        background: greenyellow;
+        background: var(--hovered);
+    }
+    .selected{
+        background: var(--hovered);
+        outline: 2px solid black;
+    }
+    .book-righthand{
+        display: flex;
+        align-items: center;
+    }
+    .book-righthand > *{
+        margin: 0 5px;
+    }
+    .book-edit-btn{
+        background-color: var(--process-button);
+        border-radius: 10px;
+        height: 1.5rem;
+    }
+    .book-delete-btn{
+        background-color: var(--hot-button);
+        border-radius: 10px;
+        height: 1.5rem;
     }
 </style>

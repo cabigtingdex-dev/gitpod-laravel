@@ -1,32 +1,80 @@
 <template>
   <div class="book-details div-window">
-    <slot> </slot>
     <div v-if="selectedBook">
-        <h2> {{ selectedBook.title }} </h2>
-        <p> Author: {{ selectedBook.author }}</p>
-        <p> Category: {{ selectedBook.category }}</p>
-        <p> Description: {{ selectedBook.description }}</p>
-        <p> Publishing House: {{ selectedBook.publishing_house }}</p>
-        <p> Date published: {{ selectedBook.publishing_date }}</p>
-        <p> Entry created at: {{ selectedBook.created_at }}</p>
-        <p> Entry last updated at: {{ selectedBook.updated_at }}</p>
+        <table class="limit-width">
+          <tr>
+            <th colspan="2" class="book-title">{{ selectedBook.title }}</th>
+          </tr>
+          <tr>
+            <td>Author:</td>
+            <td>{{ selectedBook.author }}</td>
+          </tr>
+          <tr>
+            <td>Category:</td>
+            <td>{{ selectedBook.category }}</td>
+          </tr>
+          <tr>
+            <td>Description:</td>
+            <td>{{ selectedBook.description }}</td>
+          </tr>
+          <tr>
+            <td>Publishing House:</td>
+            <td>{{ selectedBook.publishing_house }}</td>
+          </tr>
+          <tr>
+            <td>Publishing Date:</td>
+            <td>{{ selectedBook.publishing_date }}</td>
+          </tr>
+          <tr>
+            <td>Entry created at:</td>
+            <td>{{ selectedBook.created_at }}</td>
+          </tr>
+          <tr>
+            <td>Entry last modified at:</td>
+            <td>{{ selectedBook.updated_at }}</td>
+          </tr>
+        </table>
     </div>
     <div v-else>
-        <h2> Book details </h2>
-        Loading...
+        <table class="limit-width">
+          <tr>
+            <th colspan="2" class="book-title">Book Details</th>
+          </tr>
+          <tr>
+            <td colspan="2"> {{ loadingmessage }} </td>
+          </tr>
+        </table>
     </div>
   </div>
 </template>
 
 <script>
+import { watch, ref } from '@vue/runtime-core'
 export default {
     props: [ 'selectedBook' ],
-    setup(){
+    setup(props){
+      const loadingmessage = ref("No book selected")
 
+      watch(() => props.selectedBook, () => {
+        if(props.selectedBook){ 
+          loadingmessage.value = "Loading..." 
+        }
+      })
+
+      return { loadingmessage }
     }
 }
 </script>
 
 <style>
-
+  .limit-width{
+    width: 300px;
+  }
+  .book-title{
+    font-size: 1.3rem;
+  }
+  th, td{
+    text-align: center;
+    /* padding: 10px; */
+  }
 </style>
