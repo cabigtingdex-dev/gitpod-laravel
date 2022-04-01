@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('books', BookController::class);
 
 Route::controller(BookBatchController::class)->group(function () {
-    Route::post('books/batch', 'batchStore');
-    Route::put('books/batch', 'batchUpdate');
-    Route::delete('books/batch', 'batchDelete');
+    Route::post('books/batch', 'batchStore')->name('books.batch.store');
+    Route::put('books/batch', 'batchUpdate')->name('books.batch.update');
+    Route::delete('books/batch', 'batchDelete')->name('books.batch.delete');
 });
