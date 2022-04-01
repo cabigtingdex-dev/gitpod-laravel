@@ -32,7 +32,7 @@ class BookBatchController extends Controller
             $bookIds = Arr::prepend($bookIds, $book->id);
         }
 
-        return BookResource::collection(Book::find($bookIds));
+        return BookResource::collection(Book::findMany($bookIds));
     }
 
     
@@ -50,7 +50,7 @@ class BookBatchController extends Controller
             $book->update($booksData[$i]);
         }
 
-        return BookResource::collection(Book::find($bookIds));
+        return BookResource::collection(Book::findMany($bookIds));
     }
 
    
