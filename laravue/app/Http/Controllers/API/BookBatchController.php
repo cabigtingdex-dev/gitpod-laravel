@@ -56,6 +56,15 @@ class BookBatchController extends Controller
    
     public function batchDestroy(Request $request)
     {
-        //
+        $bookIds = $request->bookIds;
+
+        $books = Book::findMany($bookIds);
+
+        $books->each(function($book) {
+            $book->delete();
+        });
+
+        return response()->noContent();
     }
+
 }
