@@ -38,7 +38,19 @@ class BookBatchController extends Controller
     
     public function batchUpdate(Request $request)
     {
-        //
+        $bookIds = $request->bookData->pluck('id');
+        $booksData = $request->booksData;
+
+        $bookCount = count($bookIds);
+
+        for($i = 0; $i < $bookCount; $i++)
+        {
+            $book = Book::firstOrFail($bookIds[$i]);
+
+            $book->update($booksData[$i]);
+        }
+
+        return BookResource::collection(Book::find($bookIds));
     }
 
    
