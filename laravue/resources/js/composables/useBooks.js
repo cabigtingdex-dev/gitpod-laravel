@@ -31,8 +31,25 @@ function useBook() {
           return response.data.data
       }
       catch(err){
-          console.log(err)
+          console.log(err.message)
       }
+    }
+
+    const updateBook = async (id, formData) => {
+        try {
+            let data = await axios.put("/api/books/" + id, { 
+                title: formData.get('title'),
+                author: formData.get('author'),
+                category: formData.get('category'),
+                description: formData.get('description'),
+                publishing_house: formData.get('publishing_house'),
+                publishing_date: formData.get('publishing_date'),
+             })
+            console.log(data.data)
+        } 
+        catch (err) {
+            console.log(err.message)
+        }
     }
 
     const deleteBook = async (id) => {
@@ -45,7 +62,7 @@ function useBook() {
       }
   }
 
-    return { books, book, getBooks, getBook, insertBook, deleteBook }
+    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook }
 }
 
 export default useBook

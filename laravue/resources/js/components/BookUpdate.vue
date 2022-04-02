@@ -1,7 +1,7 @@
 <template>
   <div class="backdrop">
         <div class="book-add-modal">
-            <h2> Book Add Form </h2>
+            <h2> Book Update Form </h2>
             <form @submit.prevent="handleSubmit" action="post" class="book-form" id="bookform">
                 <label> Title: </label>
                 <input type="text" name="title" required v-model="title">
@@ -16,7 +16,7 @@
                 <label> Publishing Date: </label>
                 <input type="date" name="publishing_date" required v-model="publishing_date">
                 <div class="book-form-btn-wrapper">
-                    <input type="submit" value="Add book">
+                    <input type="submit" value="Update book">
                     <input @click="closeModal" type="button" value="Cancel">
                 </div>
             </form>
@@ -28,24 +28,25 @@
 import { toRefs, reactive } from 'vue'
 
 export default {
-    emits: [ 'closeBookAddForm', 'submitted' ],
+    props: [ 'selectedBook' ],
+    emits: [ 'closeBookUpdateForm', 'submitted' ],
     setup(props,{ emit }){
         const formData = reactive
         ({
-            title: 'My Vue Training',
-            author: 'Kyle Andrae Mendiola',
-            category: 'Web Development',
-            description: 'Just a test book',
-            publishing_house: 'Bahay_Kyle',
-            publishing_date: '2021-01-01',
+            title: props.selectedBook.title ,
+            author: props.selectedBook.author,
+            category: props.selectedBook.category,
+            description: props.selectedBook.description,
+            publishing_house: props.selectedBook.publishing_house,
+            publishing_date: props.selectedBook.publishing_date,
         })
 
         const closeModal = () => {
-            emit('closeBookAddForm')
+            emit('closeBookUpdateForm')
         }
 
         function handleSubmit(){
-            emit('submitted', new FormData(bookform))
+            emit('submitted', props.selectedBook.id, new FormData(bookform))
         }
 
         return { ...toRefs(formData), handleSubmit, closeModal }
@@ -54,42 +55,9 @@ export default {
 </script>
 
 <style>
-    .book-add-modal {
-        width: 400px;
-        padding: 20px;
-        margin: 100px auto;
-        background: white;
-        border-radius: 10px;
-    }
-
-    .backdrop {
-        top: 0;
-        position: fixed;
-        background: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        height: 100%;
-    }
-    .book-form{
-        display: flex;
-        flex-direction: column;
-    }
-    .book-form > input[type="text"], .book-form > input[type="date"]{
-        height: 1.4rem;
-        border-radius: 10px;
-    }
-    .book-form-btn-wrapper{
-        display: flex;
-        justify-content: space-evenly;
-        margin-top: 10px;
-    }
-    input[value="Add book"]{
+    input[value="Update book"]{
         padding: 1.4rem;
         background-color: var(--process-button);
-        border-radius: 10px;
-    }
-    input[value="Cancel"]{
-        padding: 1.4rem;
-        background-color: var(--hot-button);
         border-radius: 10px;
     }
 </style>

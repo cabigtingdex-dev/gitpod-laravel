@@ -8,14 +8,14 @@
                 <button @click="showBookAddForm" class="add-book-btn v-center"> Add a Book </button>
             </li>
         </ul>
-        <ul class="book-list-container">
+        <ul class="book-list-container" v-if="books">
             <li @click="selectBook(book.id)" 
             v-for="book in books" :key="book.id" 
             class="book" :class="{ selected: selectedBook.id === book.id }">
                 <h3> {{ book.title }} </h3>
                 <div class="book-righthand">
                     <p> {{ book.author }} </p>
-                    <button class="book-edit-btn"> Edit   </button>
+                    <button @click.stop="showBookUpdateForm(book.id)" class="book-edit-btn"> Edit </button>
                     <button @click.stop="deleteBook(book.id)" class="book-delete-btn"> Delete </button>
                 </div>
             </li>
@@ -24,11 +24,10 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 
 export default {
     props: [ 'books', 'selectedBook' ],
-    emits: [ 'bookClick', 'showBookAddForm', 'bookDelete' ],
+    emits: [ 'bookClick', 'showBookAddForm', 'showBookUpdateForm', 'bookUpdate', 'bookDelete' ],
     setup(props, { emit }){
         const selectBook = (id) => {
             if(props.selectedBook.id !== id){
@@ -40,10 +39,20 @@ export default {
         }
 
         const deleteBook = (id) => {
-            emit('bookDelete', id)
+            if(confirm("Are you sure?")){
+                emit('bookDelete', id)
+            }
         }
 
-        return { selectBook, showBookAddForm, deleteBook }
+        const showBookUpdateForm = (id) => {
+            emit('showBookUpdateForm', id)
+        }
+
+        const updateBook = (id) => {
+             emit('bookUpdate', id)   
+        }
+
+        return { selectBook, showBookAddForm, showBookUpdateForm, updateBook, deleteBook }
     }
 }
 </script>

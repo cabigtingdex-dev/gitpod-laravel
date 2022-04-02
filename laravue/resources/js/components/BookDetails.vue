@@ -41,7 +41,11 @@
             <th colspan="2" class="book-title">Book Details</th>
           </tr>
           <tr>
-            <td colspan="2"> {{ loadingmessage }} </td>
+            <td colspan="2"> 
+              <slot name="loadingmessage"> 
+                
+              </slot> 
+            </td>
           </tr>
         </table>
     </div>
@@ -49,19 +53,11 @@
 </template>
 
 <script>
-import { watch, ref } from '@vue/runtime-core'
+
 export default {
     props: [ 'selectedBook' ],
     setup(props){
-      const loadingmessage = ref("No book selected")
 
-      watch(() => props.selectedBook, () => {
-        if(props.selectedBook){ 
-          loadingmessage.value = "Loading..." 
-        }
-      })
-
-      return { loadingmessage }
     }
 }
 </script>
