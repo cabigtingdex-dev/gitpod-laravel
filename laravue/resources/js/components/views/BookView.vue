@@ -7,7 +7,8 @@
             @bookClick="setSelectedBook" 
             @showBookAddForm="toggleBookAddForm" 
             @showBookUpdateForm="toggleBookUpdateForm"  
-            @bookDelete="deleteBk" />
+            @bookDelete="deleteBk"
+            @batchDeleteClicked="batchDeleteBks" />
 
             <BookDetails :selectedBook="selectedBook">
                 <template v-slot:loadingmessage> 
@@ -36,7 +37,7 @@ import { onMounted, ref } from '@vue/runtime-core'
 export default {
     components: { BookList, BookDetails, BookAdd, BookUpdate },
     setup(){
-        const { books, book, getBooks, getBook, insertBook, updateBook, deleteBook } = useBooks()
+        const { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchDeleteBooks } = useBooks()
 
         const selectedBook = ref(false)
         const showBookAddForm = ref(false)
@@ -93,6 +94,10 @@ export default {
             await deleteBook(id)
         }
 
+        const batchDeleteBks = async (bookIds) => {
+            await batchDeleteBooks(bookIds)
+        }
+
         return { 
             books, 
             book, 
@@ -102,6 +107,7 @@ export default {
             addBook, 
             updateBk,
             deleteBk,
+            batchDeleteBks,
             showBookAddForm,
             showBookUpdateForm,
             toggleBookAddForm,

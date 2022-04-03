@@ -71,6 +71,6 @@ export default {
   }
   th, td{
     text-align: center;
-    /* padding: 10px; */
+    padding-bottom: 10px;
   }
 </style>

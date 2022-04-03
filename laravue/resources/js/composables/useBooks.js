@@ -1,7 +1,12 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import { stringify } from 'qs'
+
+const qs = require('qs')
+
 
 function useBook() {
+    
     const books = ref([])
     const book = ref(null)
 
@@ -60,9 +65,30 @@ function useBook() {
       catch (err){
           console.log(err)
       }
-  }
+    }
+    const batchDeleteBooks = async (bookIds) => {
+        console.log(bookIds)
+        // try{
+        //     bookIds =[1, 2]
+        //     console.log(bookIds)
+        //     // let myAxios = axios.create({
+        //     //     paramsSerializer: params => stringify(params, {arrayFormat: 'repeat'})
+        //     // })
+        //     await axios.delete('/api/books/batch', { data: { bookIds } })
 
-    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook }
+        //     // await axios.delete('/api/books/batch', {
+        //     //     params: { bookIds },
+        //     //     paramsSerializer: params => {
+        //     //         return qs.stringify(params)
+        //     //     }
+        //     // })
+        // }
+        // catch(err){
+        //     console.log(err)
+        // }
+    }
+
+    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchDeleteBooks }
 }
 
 export default useBook

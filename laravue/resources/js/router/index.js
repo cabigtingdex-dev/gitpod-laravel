@@ -3,6 +3,7 @@ import HomeView from '../components/views/HomeView.vue'
 import BookView from '../components/views/BookView.vue'
 import LoginView from '../components/views/LoginView.vue'
 import RegisterView from '../components/views/RegisterView.vue'
+import BookBatchAddView from '../components/views/BookBatchAddView.vue'
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: '/register',
         name: 'register',
         component: RegisterView
+    },
+    {
+        path: '/books/batch/add',
+        name: 'booksAddBatch',
+        component: BookBatchAddView
     }
 ]
 
