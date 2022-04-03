@@ -64,9 +64,9 @@ export default {
                 emit('bookDelete', id)
             }
         }
-        const batchDelete = async () => {
+        const batchDelete = () => {
             if(confirm(`Are you sure? ${ selectedBooks.value.length } records will be deleted.`)){
-                await emit("batchDeleteClicked", selectedBooks.value)
+                emit("batchDeleteClicked", selectedBooks.value)
                 selectedBooks.value = []
             }
         }
