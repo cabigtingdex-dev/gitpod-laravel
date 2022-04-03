@@ -9,11 +9,10 @@ use App\Http\Resources\BookResource;
 use Illuminate\Support\Arr;
 
 class BookBatchController extends Controller
-{
-   
+{  
     public function batchStore(Request $request)
     {
-        $newBooks = $request->newBooks;
+        $newBooks = $request->input('newBooks');
 
         $bookCount = count($newBooks);
 
@@ -38,8 +37,8 @@ class BookBatchController extends Controller
     
     public function batchUpdate(Request $request)
     {
-        $bookIds = $request->bookData->pluck('id');
-        $booksData = $request->booksData;
+        $bookIds = $request->input('bookIds');
+        $booksData = $request->input('booksData');
 
         $bookCount = count($bookIds);
 
@@ -56,13 +55,9 @@ class BookBatchController extends Controller
    
     public function batchDestroy(Request $request)
     {
-        $bookIds = $request->bookIds;
+        $bookIds = $request->input('bookIds');
 
-        $books = Book::findMany($bookIds);
-
-        $books->each(function($book) {
-            $book->delete();
-        });
+        Book::whereIn('id', $bookIds)->delete();
 
         return response()->noContent();
     }
