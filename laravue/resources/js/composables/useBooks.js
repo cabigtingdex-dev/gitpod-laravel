@@ -68,24 +68,14 @@ function useBook() {
     }
     const batchDeleteBooks = async (bookIds) => {
         console.log(bookIds)
-        // try{
-        //     bookIds =[1, 2]
-        //     console.log(bookIds)
-        //     // let myAxios = axios.create({
-        //     //     paramsSerializer: params => stringify(params, {arrayFormat: 'repeat'})
-        //     // })
-        //     await axios.delete('/api/books/batch', { data: { bookIds } })
-
-        //     // await axios.delete('/api/books/batch', {
-        //     //     params: { bookIds },
-        //     //     paramsSerializer: params => {
-        //     //         return qs.stringify(params)
-        //     //     }
-        //     // })
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+        try{
+            bookIds = [...bookIds]
+            await axios.delete('/api/books/batch', { data: { bookIds } })
+            getBooks()
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchDeleteBooks }

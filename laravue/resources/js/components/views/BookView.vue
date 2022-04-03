@@ -96,6 +96,7 @@ export default {
 
         const batchDeleteBks = async (bookIds) => {
             await batchDeleteBooks(bookIds)
+            getBooks()
         }
 
         return { 

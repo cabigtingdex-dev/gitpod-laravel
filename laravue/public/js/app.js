@@ -19606,7 +19606,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -19627,7 +19635,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   emits: ['bookClick', 'showBookAddForm', 'showBookUpdateForm', 'bookUpdate', 'bookDelete', 'batchDeleteClicked'],
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
-    var selectedBooks = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    var selectedBooks = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
 
     var computeSelectedBooks = function computeSelectedBooks() {
       var checkboxes = _toConsumableArray(document.querySelectorAll("input[name='book']:checked"));
@@ -19667,9 +19675,35 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     };
 
-    var batchDelete = function batchDelete() {
-      emit("batchDeleteClicked", selectedBooks.value);
-    };
+    var batchDelete = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!confirm("Are you sure? ".concat(selectedBooks.value.length, " records will be deleted."))) {
+                  _context.next = 4;
+                  break;
+                }
+
+                _context.next = 3;
+                return emit("batchDeleteClicked", selectedBooks.value);
+
+              case 3:
+                selectedBooks.value = [];
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function batchDelete() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
 
     var showBookUpdateForm = function showBookUpdateForm(id) {
       emit('showBookUpdateForm', id);
@@ -20033,6 +20067,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return batchDeleteBooks(bookIds);
 
               case 2:
+                getBooks();
+
+              case 3:
               case "end":
                 return _context6.stop();
             }
@@ -20390,58 +20427,58 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "add-book-btn v-center"
-};
+}, " Add Multiple Books ", -1
+/* HOISTED */
+);
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Multiple Books ");
-
-var _hoisted_6 = ["disabled"];
-var _hoisted_7 = {
+var _hoisted_5 = ["disabled"];
+var _hoisted_6 = {
   key: 0,
   "class": "book-list-container"
 };
-var _hoisted_8 = ["onClick"];
-var _hoisted_9 = {
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
   "class": "book-lefthand"
 };
-var _hoisted_10 = ["value"];
-var _hoisted_11 = {
+var _hoisted_9 = ["value"];
+var _hoisted_10 = {
   "class": "book-righthand"
 };
-var _hoisted_12 = {
+var _hoisted_11 = {
   "class": "book-author"
 };
+var _hoisted_12 = ["onClick"];
 var _hoisted_13 = ["onClick"];
-var _hoisted_14 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $setup.showBookAddForm && $setup.showBookAddForm.apply($setup, arguments);
     }),
     "class": "add-book-btn v-center"
-  }, " Add a Book "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, " Add a Book ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'booksAddBatch'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [_hoisted_4];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function () {
       return $setup.batchDelete && $setup.batchDelete.apply($setup, arguments);
     }),
-    disabled: !$setup.selectedBooks,
+    disabled: !$setup.selectedBooks.length >= 1,
     "class": "delete-books-btn v-center"
   }, " Delete Selected ", 8
   /* PROPS */
-  , _hoisted_6)])]), $props.books ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
+  , _hoisted_5)])])]), $props.books ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       onClick: function onClick($event) {
         return $setup.selectBook(book.id);
@@ -20450,18 +20487,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["book", {
         selected: $props.selectedBook.id === book.id
       }])
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "checkbox",
+      "class": "cb-large",
       onClick: _cache[2] || (_cache[2] = function () {
         return $setup.computeSelectedBooks && $setup.computeSelectedBooks.apply($setup, arguments);
       }),
-      type: "checkbox",
       name: "book",
       value: book.id
     }, null, 8
     /* PROPS */
-    , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.title), 1
+    , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.title), 1
     /* TEXT */
-    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.author), 1
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.author), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -20470,16 +20508,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "book-edit-btn"
     }, " Edit ", 8
     /* PROPS */
-    , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.deleteBook(book.id);
       }, ["stop"]),
       "class": "book-delete-btn"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_14)])], 10
+    , _hoisted_13)])], 10
     /* CLASS, PROPS */
-    , _hoisted_8);
+    , _hoisted_7);
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
@@ -21048,6 +21086,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 /* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_3__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -21248,30 +21298,32 @@ function useBook() {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              console.log(bookIds); // try{
-              //     bookIds =[1, 2]
-              //     console.log(bookIds)
-              //     // let myAxios = axios.create({
-              //     //     paramsSerializer: params => stringify(params, {arrayFormat: 'repeat'})
-              //     // })
-              //     await axios.delete('/api/books/batch', { data: { bookIds } })
-              //     // await axios.delete('/api/books/batch', {
-              //     //     params: { bookIds },
-              //     //     paramsSerializer: params => {
-              //     //         return qs.stringify(params)
-              //     //     }
-              //     // })
-              // }
-              // catch(err){
-              //     console.log(err)
-              // }
+              console.log(bookIds);
+              _context6.prev = 1;
+              bookIds = _toConsumableArray(bookIds);
+              _context6.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]('/api/books/batch', {
+                data: {
+                  bookIds: bookIds
+                }
+              });
 
-            case 1:
+            case 5:
+              getBooks();
+              _context6.next = 11;
+              break;
+
+            case 8:
+              _context6.prev = 8;
+              _context6.t0 = _context6["catch"](1);
+              console.log(_context6.t0);
+
+            case 11:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6);
+      }, _callee6, null, [[1, 8]]);
     }));
 
     return function batchDeleteBooks(_x6) {
@@ -21496,7 +21548,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.book-list{\n        flex-grow: 1;\n}\n.book-list-top{\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        margin: 0 5px;\n        border-bottom: 2px solid black;\n}\n.book-list-top.li{\n        display: flex;\n        align-content: center;\n        padding: 0;\n}\n.add-book-btn{\n        background: var(--process-button);\n        padding: 1.3rem;\n        border-radius: 10px;\n        font-weight: bold;\n        margin: 0 5px;\n}\n.delete-books-btn{\n        background: var(--hot-button);\n        padding: 1.3rem;\n        border-radius: 10px;\n        font-weight: bold;\n        margin: 0 5px;\n}\n.book-list-container{\n        display: flex;\n        flex-direction: column;\n}\n.book {\n        display: flex;\n        background: white;\n        justify-content: space-between;\n        margin: 5px;\n        padding: 0 5px;\n}\n.book:hover{\n        background: var(--hovered);\n}\n.selected{\n        background: var(--hovered);\n        outline: 2px solid black;\n}\n.book-righthand{\n        display: flex;\n        align-items: center;\n}\n.book-lefthand{\n        display: flex;\n        align-items: center;\n}\n.book-righthand > *{\n        margin: 0 5px;\n}\n.book-author{\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        width: 200px;\n}\n.book-edit-btn{\n        background-color: var(--process-button);\n        border-radius: 10px;\n        height: 1.5rem;\n}\n.book-delete-btn{\n        background-color: var(--hot-button);\n        border-radius: 10px;\n        height: 1.5rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.book-list{\n        flex-grow: 1;\n}\n.book-list-top{\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        margin: 0 5px;\n        border-bottom: 2px solid black;\n}\n.book-list-top.li{\n        display: flex;\n        align-content: center;\n        padding: 0;\n}\n.add-book-btn{\n        background: var(--process-button);\n        padding: 0.8rem 1.3rem;\n        border-radius: 10px;\n        font-weight: bold;\n        margin: 0 5px;\n}\n.delete-books-btn{\n        background: var(--hot-button);\n        padding: 0.8rem 1.3rem;\n        border-radius: 10px;\n        font-weight: bold;\n        margin: 0 5px;\n}\n.book-list-container{\n        display: flex;\n        flex-direction: column;\n}\n.book {\n        display: flex;\n        background: white;\n        justify-content: space-between;\n        margin: 5px;\n        padding: 0 5px;\n}\n.book:hover{\n        background: var(--hovered);\n}\n.selected{\n        background: var(--hovered);\n        outline: 2px solid black;\n}\n.book-righthand{\n        display: flex;\n        align-items: center;\n}\n.book-lefthand{\n        display: flex;\n        align-items: center;\n}\n.book-righthand > *{\n        margin: 0 5px;\n}\n.book-author{\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        width: 200px;\n}\n.book-edit-btn{\n        background-color: var(--process-button);\n        border-radius: 10px;\n        height: 1.5rem;\n}\n.book-delete-btn{\n        background-color: var(--hot-button);\n        border-radius: 10px;\n        height: 1.5rem;\n}\n.cb-large{\n        height: 25px;\n        width: 25px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

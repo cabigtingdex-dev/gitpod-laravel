@@ -5,11 +5,15 @@
                 <h2> Books </h2>
             </li>
             <li>
-                <button @click="showBookAddForm" class="add-book-btn v-center"> Add a Book </button>
-                <button class="add-book-btn v-center"> 
-                    <router-link :to="{ name: 'booksAddBatch' }"> Add Multiple Books </router-link> 
-                </button>
-                <button @click="batchDelete" :disabled="!selectedBooks" class="delete-books-btn v-center"> Delete Selected </button>
+                <a>
+                    <button @click="showBookAddForm" class="add-book-btn v-center"> Add a Book </button>
+                </a>
+                <router-link :to="{ name: 'booksAddBatch' }"> 
+                    <button class="add-book-btn v-center"> Add Multiple Books </button> 
+                </router-link> 
+                <a>
+                    <button @click="batchDelete" :disabled="!selectedBooks.length >= 1" class="delete-books-btn v-center"> Delete Selected </button>
+                </a>
             </li>
         </ul>
         <ul class="book-list-container" v-if="books">
@@ -17,7 +21,7 @@
             v-for="book in books" :key="book.id" 
             class="book" :class="{ selected: selectedBook.id === book.id }">
                 <div class="book-lefthand">
-                    <input @click="computeSelectedBooks" type="checkbox" name="book" :value="book.id">
+                    <input type="checkbox" class="cb-large" @click="computeSelectedBooks" name="book" :value="book.id">
                     <h3> {{ book.title }} </h3>
                 </div>
                 <div class="book-righthand">
@@ -60,8 +64,11 @@ export default {
                 emit('bookDelete', id)
             }
         }
-        const batchDelete = () => {
-            emit("batchDeleteClicked", selectedBooks.value)
+        const batchDelete = async () => {
+            if(confirm(`Are you sure? ${ selectedBooks.value.length } records will be deleted.`)){
+                await emit("batchDeleteClicked", selectedBooks.value)
+                selectedBooks.value = []
+            }
         }
         const showBookUpdateForm = (id) => {
             emit('showBookUpdateForm', id)
@@ -101,14 +108,14 @@ export default {
     }
     .add-book-btn{
         background: var(--process-button);
-        padding: 1.3rem;
+        padding: 0.8rem 1.3rem;
         border-radius: 10px;
         font-weight: bold;
         margin: 0 5px;
     }
     .delete-books-btn{
         background: var(--hot-button);
-        padding: 1.3rem;
+        padding: 0.8rem 1.3rem;
         border-radius: 10px;
         font-weight: bold;
         margin: 0 5px;
@@ -157,5 +164,9 @@ export default {
         background-color: var(--hot-button);
         border-radius: 10px;
         height: 1.5rem;
+    }
+    .cb-large{
+        height: 25px;
+        width: 25px;
     }
 </style>
