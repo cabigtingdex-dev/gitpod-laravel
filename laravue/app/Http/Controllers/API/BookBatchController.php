@@ -38,7 +38,7 @@ class BookBatchController extends Controller
     public function batchUpdate(Request $request)
     {
         $bookIds = $request->input('bookIds');
-        $booksData = $request->booksData;
+        $booksData = $request->input('booksData');
 
         $bookCount = count($bookIds);
 
