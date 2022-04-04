@@ -12,34 +12,37 @@ class BookBatchControllerTest extends TestCase
 
     public function test_if_batch_store_endpoint_responds_200()
     {
-        $newBooks = [
-            [
-                'title' => 'Oyo Boy',
-                'author' => 'Biksoto',
-                'category' => 'Rated X',
-                'description' => 'qeqqweqew',
-                'publishing_house' => 'MCC',
-                'publishing_date' => now()
-            ],
-            [
-                'title' => 'Bartolome',
-                'author' => 'Bindisel',
-                'category' => 'Rated R',
-                'description' => 'qeqqweqew',
-                'publishing_house' => 'UMC',
-                'publishing_date' => now()
-            ]
+        $data = [
+                'newBooks' => [
+                    [
+                        'title' => 'Oyo Boy',
+                        'author' => 'Biksoto',
+                        'category' => 'Rated X',
+                        'description' => 'qeqqweqew',
+                        'publishing_house' => 'MCC',
+                        'publishing_date' => now()
+                    ],
+                    [
+                        'title' => 'Bartolome',
+                        'author' => 'Bindisel',
+                        'category' => 'Rated R',
+                        'description' => 'qeqqweqew',
+                        'publishing_house' => 'UMC',
+                        'publishing_date' => now()
+                    ]
+                ]
         ];
 
-        $response = $this->post('api/books/batch', [
-            'newBooks' => $newBooks
-        ]);
+        $response = $this->postJson('api/books/batch', $data);
 
         $response->assertStatus(200);
 
         $this->assertDatabaseCount('books', 2);
 
-        
+        $this->assertDatabaseHas('books', [
+                                            'title' => 'Oyo Boy', 
+                                            'title' => 'Bartolome'
+                                        ]);
     }
 
     public function test_if_batch_destroy_endpoint_responds_204()
