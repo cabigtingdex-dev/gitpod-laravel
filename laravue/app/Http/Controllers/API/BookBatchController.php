@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BatchStoreBookRequest;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Http\Resources\BookResource;
@@ -14,18 +15,17 @@ class BookBatchController extends Controller
     {
         $newBooks = $request->input('newBooks');
 
-        $bookCount = count($newBooks);
-
         $bookIds = [];
 
-        for($i = 0; $i < $bookCount; $i++)
+        foreach ($newBooks as $newBook)
         {
             $book = Book::create([
-                'title' => $newBooks[$i]['title'],
-                'author' => $newBooks[$i]['author'],
-                'category' => $newBooks[$i]['category'],
-                'publishing_house' => $newBooks[$i]['publishing_house'],
-                'publishing_date' => $newBooks[$i]['publishing_date']
+                'title' => $newBook['title'],
+                'author' => $newBook['author'],
+                'category' => $newBook['category'],
+                'description' => $newBook['description'],
+                'publishing_house' => $newBook['publishing_house'],
+                'publishing_date' => $newBook['publishing_date']
             ]);
 
             $bookIds = Arr::prepend($bookIds, $book->id);
