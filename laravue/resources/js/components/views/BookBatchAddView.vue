@@ -91,7 +91,6 @@ export default {
             for (let form of formList.value) {
                 data.push(form)
             }
-            console.log(data)
             return data
         }
 

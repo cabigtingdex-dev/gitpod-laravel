@@ -19860,7 +19860,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _iterator.f();
       }
 
-      console.log(data);
       return data;
     };
 
@@ -21734,27 +21733,28 @@ function useBook() {
           switch (_context8.prev = _context8.next) {
             case 0:
               newBooks = JSON.parse(JSON.stringify(newBooks));
-              _context8.prev = 1;
-              _context8.next = 4;
+              console.log(newBooks);
+              _context8.prev = 2;
+              _context8.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/books/batch', {
                 newBooks: newBooks
               });
 
-            case 4:
-              _context8.next = 9;
+            case 5:
+              _context8.next = 10;
               break;
 
-            case 6:
-              _context8.prev = 6;
-              _context8.t0 = _context8["catch"](1);
+            case 7:
+              _context8.prev = 7;
+              _context8.t0 = _context8["catch"](2);
               console.log(_context8.t0.response.data);
 
-            case 9:
+            case 10:
             case "end":
               return _context8.stop();
           }
         }
-      }, _callee8, null, [[1, 6]]);
+      }, _callee8, null, [[2, 7]]);
     }));
 
     return function batchStoreBooks(_x9) {

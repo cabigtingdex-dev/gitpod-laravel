@@ -87,6 +87,7 @@ function useBook() {
     }
     const batchStoreBooks = async (newBooks) => {
         newBooks = JSON.parse(JSON.stringify(newBooks))
+        console.log(newBooks)
         try{
             await axios.post('/api/books/batch', { newBooks })
         }
