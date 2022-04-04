@@ -11,11 +11,13 @@ use Illuminate\Support\Arr;
 
 class BookBatchController extends Controller
 {  
-    public function batchStore(Request $request)
+    public function batchStore(BatchStoreBookRequest $request)
     {
-        $newBooks = $request->input('newBooks');
+        $newBooks = $request->validated()['newBooks'];
 
         $bookIds = [];
+
+        // $newBookList = $newBooks['newBooks'];
 
         foreach ($newBooks as $newBook)
         {
