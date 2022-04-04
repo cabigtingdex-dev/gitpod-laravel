@@ -19758,25 +19758,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _composables_useBooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables/useBooks */ "./resources/js/composables/useBooks.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
-    var formList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([(0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-      title: 'My Vue Training',
-      author: 'Kyle Andrae Mendiola',
-      category: 'Web Development',
-      description: 'Just a test book',
-      publishing_house: 'Bahay_Kyle',
-      publishing_date: '2021-01-01'
-    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+    var _useBooks = (0,_composables_useBooks__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+        batchStoreBooks = _useBooks.batchStoreBooks;
+
+    var formList = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([(0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       title: '',
       author: '',
       category: '',
       description: '',
       publishing_house: '',
       publishing_date: '2021-01-01'
-    }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
+      title: '',
+      author: '',
+      category: '',
+      description: '',
+      publishing_house: '',
+      publishing_date: '2021-01-01'
+    }), (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       title: '',
       author: '',
       category: '',
@@ -19786,7 +19805,7 @@ __webpack_require__.r(__webpack_exports__);
     })]);
 
     var addEntry = function addEntry() {
-      formList.value.push((0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      formList.value.push((0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
         title: '',
         author: '',
         category: '',
@@ -19797,15 +19816,233 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var removeEntry = function removeEntry(index) {
-      if (formList.length > 1) {
+      if (formList.value.length > 1) {
         formList.value.splice(index, 1);
       }
+    };
+
+    var batchStore = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return batchStoreBooks(getData());
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function batchStore() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    var getData = function getData() {
+      var data = [];
+
+      var _iterator = _createForOfIteratorHelper(formList.value),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var form = _step.value;
+          data.push(form);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      console.log(data);
+      return data;
     };
 
     return {
       formList: formList,
       addEntry: addEntry,
-      removeEntry: removeEntry
+      removeEntry: removeEntry,
+      batchStore: batchStore
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _composables_useBooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../composables/useBooks */ "./resources/js/composables/useBooks.js");
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['selectedBooks'],
+  setup: function setup(props) {
+    var _useBooks = (0,_composables_useBooks__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+        book = _useBooks.book,
+        getBook = _useBooks.getBook,
+        batchUpdateBooks = _useBooks.batchUpdateBooks;
+
+    var selectedBookList = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
+    var formDataList = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var selBks, _iterator, _step, bookId;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              selBks = props.selectedBooks;
+              _iterator = _createForOfIteratorHelper(selBks);
+              _context.prev = 2;
+
+              _iterator.s();
+
+            case 4:
+              if ((_step = _iterator.n()).done) {
+                _context.next = 12;
+                break;
+              }
+
+              bookId = _step.value;
+              _context.next = 8;
+              return getBook(bookId);
+
+            case 8:
+              selectedBookList.value.push(book.value);
+              formDataList.value[bookId] = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
+                title: book.value.title,
+                author: book.value.author,
+                category: book.value.category,
+                description: book.value.description,
+                publishing_house: book.value.publishing_house,
+                publishing_date: book.value.publishing_date
+              });
+
+            case 10:
+              _context.next = 4;
+              break;
+
+            case 12:
+              _context.next = 17;
+              break;
+
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](2);
+
+              _iterator.e(_context.t0);
+
+            case 17:
+              _context.prev = 17;
+
+              _iterator.f();
+
+              return _context.finish(17);
+
+            case 20:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 14, 17, 20]]);
+    })));
+
+    var batchUpdate = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return batchUpdateBooks(getIds(), getData());
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function batchUpdate() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    var removeEntry = function removeEntry(index) {
+      if (selectedBookList.value.length > 1) {
+        delete formDataList.value[index];
+        selectedBookList.value.splice(index, 1);
+      }
+    };
+
+    var getIds = function getIds() {
+      var ids = [];
+
+      var _iterator2 = _createForOfIteratorHelper(selectedBookList.value),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var _book = _step2.value;
+          ids.push(_book.id);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      return ids;
+    };
+
+    var getData = function getData() {
+      var data = [];
+
+      for (var key in formDataList.value) {
+        if (formDataList.value.hasOwnProperty(key)) {
+          data.push(formDataList.value[key]);
+        }
+      }
+
+      return data;
+    };
+
+    return {
+      selectedBookList: selectedBookList,
+      formDataList: formDataList,
+      removeEntry: removeEntry,
+      batchUpdate: batchUpdate
     };
   }
 });
@@ -19994,24 +20231,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     }();
 
-    var deleteBk = /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
+    var deleteBk = function deleteBk(id) {
+      // Change book detail loading message depending on conditions
+      if (selectedBook.value.id === id || selectedBook) {
+        loadingmessage.value = "No book selected";
+      } // Removes deleted book from book list
+
+
+      books.value = books.value.filter(function (value) {
+        return value.id !== id;
+      });
+      selectedBook.value = false;
+      deleteBook(id);
+    };
+
+    var batchDeleteBks = /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(bookIds) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                // Change book detail loading message depending on conditions
-                if (selectedBook.value.id === id || selectedBook) {
-                  loadingmessage.value = "No book selected";
-                } // Removes deleted book from book list
+                _context5.next = 2;
+                return batchDeleteBooks(bookIds);
 
-
-                books.value = books.value.filter(function (value) {
-                  return value.id !== id;
-                });
+              case 2:
+                loadingmessage.value = "No book selected";
                 selectedBook.value = false;
-                _context5.next = 5;
-                return deleteBook(id);
+                getBooks();
 
               case 5:
               case "end":
@@ -20021,33 +20267,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }));
 
-      return function deleteBk(_x6) {
+      return function batchDeleteBks(_x6) {
         return _ref5.apply(this, arguments);
-      };
-    }();
-
-    var batchDeleteBks = /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(bookIds) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.next = 2;
-                return batchDeleteBooks(bookIds);
-
-              case 2:
-                getBooks();
-
-              case 3:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
-      }));
-
-      return function batchDeleteBks(_x7) {
-        return _ref6.apply(this, arguments);
       };
     }();
 
@@ -20403,23 +20624,24 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_5 = ["disabled"];
-var _hoisted_6 = {
+var _hoisted_6 = ["disabled"];
+var _hoisted_7 = {
   key: 0,
   "class": "book-list-container"
 };
-var _hoisted_7 = ["onClick"];
-var _hoisted_8 = {
+var _hoisted_8 = ["onClick"];
+var _hoisted_9 = {
   "class": "book-lefthand"
 };
-var _hoisted_9 = ["value"];
-var _hoisted_10 = {
+var _hoisted_10 = ["value"];
+var _hoisted_11 = {
   "class": "book-righthand"
 };
-var _hoisted_11 = {
+var _hoisted_12 = {
   "class": "book-author"
 };
-var _hoisted_12 = ["onClick"];
 var _hoisted_13 = ["onClick"];
+var _hoisted_14 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -20439,7 +20661,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'booksUpdateBatch',
+      params: {
+        selectedBooks: $setup.selectedBooks
+      }
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        disabled: !$setup.selectedBooks.length >= 1,
+        "class": "add-book-btn v-center"
+      }, " Edit Selected ", 8
+      /* PROPS */
+      , _hoisted_5)];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function () {
       return $setup.batchDelete && $setup.batchDelete.apply($setup, arguments);
     }),
@@ -20447,7 +20690,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "delete-books-btn v-center"
   }, " Delete Selected ", 8
   /* PROPS */
-  , _hoisted_5)])])]), $props.books ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
+  , _hoisted_6)])])]), $props.books ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       onClick: function onClick($event) {
         return $setup.selectBook(book.id);
@@ -20456,7 +20699,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["book", {
         selected: $props.selectedBook.id === book.id
       }])
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "checkbox",
       "class": "cb-large",
       onClick: _cache[2] || (_cache[2] = function () {
@@ -20466,9 +20709,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: book.id
     }, null, 8
     /* PROPS */
-    , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.title), 1
+    , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.title), 1
     /* TEXT */
-    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.author), 1
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.author), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -20477,16 +20720,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "book-edit-btn"
     }, " Edit ", 8
     /* PROPS */
-    , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.deleteBook(book.id);
       }, ["stop"]),
       "class": "book-delete-btn"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_13)])], 10
+    , _hoisted_14)])], 10
     /* CLASS, PROPS */
-    , _hoisted_7);
+    , _hoisted_8);
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
@@ -20724,22 +20967,28 @@ var _hoisted_2 = {
   "class": "full-width"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Author"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Category"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Description"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing house"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing date")], -1
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  colspan: "7"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, " Add Books ")])], -1
 /* HOISTED */
 );
 
-var _hoisted_4 = ["onUpdate:modelValue"];
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Author"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Category"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Description"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing house"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing date")], -1
+/* HOISTED */
+);
+
 var _hoisted_5 = ["onUpdate:modelValue"];
 var _hoisted_6 = ["onUpdate:modelValue"];
 var _hoisted_7 = ["onUpdate:modelValue"];
 var _hoisted_8 = ["onUpdate:modelValue"];
 var _hoisted_9 = ["onUpdate:modelValue"];
-var _hoisted_10 = ["onClick"];
-var _hoisted_11 = {
+var _hoisted_10 = ["onUpdate:modelValue"];
+var _hoisted_11 = ["onClick"];
+var _hoisted_12 = {
   "class": "batch-add-bottom"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "batch-add-bottom-btn"
 }, " Return to book views ", -1
 /* HOISTED */
@@ -20748,7 +20997,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [_hoisted_3, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.formList, function (form) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [_hoisted_3, _hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.formList, function (form) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: $setup.formList.indexOf(form)
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -20760,7 +21009,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       name: "author",
       required: "",
@@ -20769,7 +21018,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].author]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_6), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].author]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       name: "category",
       required: "",
@@ -20778,7 +21027,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_6), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].category]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_7), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].category]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       name: "description",
       required: "",
@@ -20787,7 +21036,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_7), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       name: "publishing_house",
       required: "",
@@ -20796,7 +21045,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].publishing_house]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_9), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].publishing_house]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "date",
       name: "publishing_date",
       required: "",
@@ -20805,23 +21054,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_9), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].publishing_date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formList[$setup.formList.indexOf(form)].publishing_date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $setup.removeEntry($setup.formList.indexOf(form));
       }
     }, " Delete", 8
     /* PROPS */
-    , _hoisted_10)])]);
+    , _hoisted_11)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'books'
     },
     "class": "return-book-view"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_12];
+      return [_hoisted_13];
     }),
     _: 1
     /* STABLE */
@@ -20831,7 +21080,150 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.addEntry && $setup.addEntry.apply($setup, arguments);
     }),
     "class": "batch-add-bottom-btn"
-  }, " Add Entry ")])])]);
+  }, " Add Entry ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $setup.batchStore && $setup.batchStore.apply($setup, arguments);
+    }),
+    "class": "batch-add-bottom-btn"
+  }, " Add Books to Database ")])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "form-list book-add-batch-form"
+};
+var _hoisted_2 = {
+  "class": "full-width"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  colspan: "7"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, " Edit Books Information ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Author"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Category"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Description"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing house"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Publishing date")], -1
+/* HOISTED */
+);
+
+var _hoisted_5 = ["onUpdate:modelValue"];
+var _hoisted_6 = ["onUpdate:modelValue"];
+var _hoisted_7 = ["onUpdate:modelValue"];
+var _hoisted_8 = ["onUpdate:modelValue"];
+var _hoisted_9 = ["onUpdate:modelValue"];
+var _hoisted_10 = ["onUpdate:modelValue"];
+var _hoisted_11 = ["onClick"];
+var _hoisted_12 = {
+  "class": "batch-add-bottom"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "batch-add-bottom-btn"
+}, " Return to book views ", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [_hoisted_3, _hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.selectedBookList, function (selectedBook) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: selectedBook.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "title",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].title = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "author",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].author = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_6), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].author]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "category",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].category = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_7), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].category]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "description",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].description = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "publishing_house",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].publishing_house = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_9), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].publishing_house]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "date",
+      name: "publishing_date",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.formDataList[selectedBook.id].publishing_date = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formDataList[selectedBook.id].publishing_date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick($event) {
+        return $setup.removeEntry($setup.selectedBookList.indexOf(selectedBook.id));
+      }
+    }, " Delete ", 8
+    /* PROPS */
+    , _hoisted_11)])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'books'
+    },
+    "class": "return-book-view"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_13];
+    }),
+    _: 1
+    /* STABLE */
+
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $setup.batchUpdate && $setup.batchUpdate.apply($setup, arguments);
+    }),
+    "class": "batch-add-bottom-btn"
+  }, " Update Books ")])])]);
 }
 
 /***/ }),
@@ -21267,36 +21659,106 @@ function useBook() {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              console.log(bookIds);
-              _context6.prev = 1;
+              _context6.prev = 0;
               bookIds = _toConsumableArray(bookIds);
-              _context6.next = 5;
+              _context6.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]('/api/books/batch', {
                 data: {
                   bookIds: bookIds
                 }
               });
 
-            case 5:
+            case 4:
               getBooks();
-              _context6.next = 11;
+              _context6.next = 10;
               break;
 
-            case 8:
-              _context6.prev = 8;
-              _context6.t0 = _context6["catch"](1);
+            case 7:
+              _context6.prev = 7;
+              _context6.t0 = _context6["catch"](0);
               console.log(_context6.t0);
 
-            case 11:
+            case 10:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[1, 8]]);
+      }, _callee6, null, [[0, 7]]);
     }));
 
     return function batchDeleteBooks(_x6) {
       return _ref6.apply(this, arguments);
+    };
+  }();
+
+  var batchUpdateBooks = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(bookIds, booksData) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              booksData = JSON.parse(JSON.stringify(booksData));
+              _context7.prev = 1;
+              _context7.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/books/batch', {
+                bookIds: bookIds,
+                booksData: booksData
+              });
+
+            case 4:
+              _context7.next = 9;
+              break;
+
+            case 6:
+              _context7.prev = 6;
+              _context7.t0 = _context7["catch"](1);
+              console.log(_context7.t0.response.data);
+
+            case 9:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7, null, [[1, 6]]);
+    }));
+
+    return function batchUpdateBooks(_x7, _x8) {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var batchStoreBooks = /*#__PURE__*/function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(newBooks) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              newBooks = JSON.parse(JSON.stringify(newBooks));
+              _context8.prev = 1;
+              _context8.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/books/batch', {
+                newBooks: newBooks
+              });
+
+            case 4:
+              _context8.next = 9;
+              break;
+
+            case 6:
+              _context8.prev = 6;
+              _context8.t0 = _context8["catch"](1);
+              console.log(_context8.t0.response.data);
+
+            case 9:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8, null, [[1, 6]]);
+    }));
+
+    return function batchStoreBooks(_x9) {
+      return _ref8.apply(this, arguments);
     };
   }();
 
@@ -21308,6 +21770,8 @@ function useBook() {
     insertBook: insertBook,
     updateBook: updateBook,
     deleteBook: deleteBook,
+    batchUpdateBooks: batchUpdateBooks,
+    batchStoreBooks: batchStoreBooks,
     batchDeleteBooks: batchDeleteBooks
   };
 }
@@ -21327,13 +21791,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _components_views_HomeView_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/views/HomeView.vue */ "./resources/js/components/views/HomeView.vue");
 /* harmony import */ var _components_views_BookView_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/views/BookView.vue */ "./resources/js/components/views/BookView.vue");
 /* harmony import */ var _components_views_LoginView_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/views/LoginView.vue */ "./resources/js/components/views/LoginView.vue");
 /* harmony import */ var _components_views_RegisterView_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/views/RegisterView.vue */ "./resources/js/components/views/RegisterView.vue");
 /* harmony import */ var _components_views_BookBatchAddView_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/views/BookBatchAddView.vue */ "./resources/js/components/views/BookBatchAddView.vue");
+/* harmony import */ var _components_views_BookBatchUpdateView_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/views/BookBatchUpdateView.vue */ "./resources/js/components/views/BookBatchUpdateView.vue");
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+
 
 
 
@@ -21360,9 +21826,14 @@ var routes = [{
   path: '/books/batch/add',
   name: 'booksAddBatch',
   component: _components_views_BookBatchAddView_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/books/batch/edit',
+  name: 'booksUpdateBatch',
+  component: _components_views_BookBatchUpdateView_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+  props: true
 }];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createWebHashHistory)(process.env.BASE_URL),
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createWebHashHistory)(process.env.BASE_URL),
   routes: routes
 }));
 
@@ -42718,6 +43189,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/views/BookBatchUpdateView.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/views/BookBatchUpdateView.vue ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BookBatchUpdateView_vue_vue_type_template_id_69e5c7c3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3 */ "./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3");
+/* harmony import */ var _BookBatchUpdateView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookBatchUpdateView.vue?vue&type=script&lang=js */ "./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js");
+/* harmony import */ var _workspace_gitpod_laravel_laravue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_workspace_gitpod_laravel_laravue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_BookBatchUpdateView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookBatchUpdateView_vue_vue_type_template_id_69e5c7c3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/views/BookBatchUpdateView.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/views/BookView.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/views/BookView.vue ***!
@@ -42944,6 +43443,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchUpdateView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchUpdateView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookBatchUpdateView.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/views/BookView.vue?vue&type=script&lang=js":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/views/BookView.vue?vue&type=script&lang=js ***!
@@ -43116,6 +43631,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchAddView_vue_vue_type_template_id_5e3baa81__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchAddView_vue_vue_type_template_id_5e3baa81__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookBatchAddView.vue?vue&type=template&id=5e3baa81 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchAddView.vue?vue&type=template&id=5e3baa81");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3 ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchUpdateView_vue_vue_type_template_id_69e5c7c3__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookBatchUpdateView_vue_vue_type_template_id_69e5c7c3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/views/BookBatchUpdateView.vue?vue&type=template&id=69e5c7c3");
 
 
 /***/ }),

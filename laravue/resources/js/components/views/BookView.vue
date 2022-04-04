@@ -22,7 +22,6 @@
         <div v-if="showBookUpdateForm">
             <BookUpdate :selectedBook="selectedBook" @closeBookUpdateForm="toggleBookUpdateForm" @submitted="updateBk"/>
         </div>
-        
     </main>
 </template>
 
@@ -83,7 +82,7 @@ export default {
             setSelectedBook(id)
         }
 
-        const deleteBk = async (id) => {
+        const deleteBk = (id) => {
             // Change book detail loading message depending on conditions
             if (selectedBook.value.id === id || selectedBook){ loadingmessage.value = "No book selected" }
 
@@ -91,11 +90,13 @@ export default {
             books.value = books.value.filter((value) => { return value.id !== id } )
 
             selectedBook.value = false
-            await deleteBook(id)
+            deleteBook(id)
         }
 
         const batchDeleteBks = async (bookIds) => {
             await batchDeleteBooks(bookIds)
+            loadingmessage.value = "No book selected"
+            selectedBook.value = false
             getBooks()
         }
 

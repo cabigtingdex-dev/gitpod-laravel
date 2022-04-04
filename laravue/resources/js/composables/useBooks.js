@@ -67,7 +67,6 @@ function useBook() {
       }
     }
     const batchDeleteBooks = async (bookIds) => {
-        console.log(bookIds)
         try{
             bookIds = [...bookIds]
             await axios.delete('/api/books/batch', { data: { bookIds } })
@@ -77,8 +76,26 @@ function useBook() {
             console.log(err)
         }
     }
+    const batchUpdateBooks = async (bookIds, booksData) => {
+        booksData = JSON.parse(JSON.stringify(booksData))
+        try{
+            await axios.put('/api/books/batch', { bookIds, booksData })
+        }
+        catch(err){
+            console.log(err.response.data)
+        }
+    }
+    const batchStoreBooks = async (newBooks) => {
+        newBooks = JSON.parse(JSON.stringify(newBooks))
+        try{
+            await axios.post('/api/books/batch', { newBooks })
+        }
+        catch(err){
+            console.log(err.response.data)
+        }
+    }
 
-    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchDeleteBooks }
+    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchUpdateBooks, batchStoreBooks, batchDeleteBooks }
 }
 
 export default useBook

@@ -11,6 +11,9 @@
                 <router-link :to="{ name: 'booksAddBatch' }"> 
                     <button class="add-book-btn v-center"> Add Multiple Books </button> 
                 </router-link> 
+                <router-link :to="{ name: 'booksUpdateBatch', params: { selectedBooks } }"> 
+                    <button :disabled="!selectedBooks.length >= 1" class="add-book-btn v-center"> Edit Selected </button> 
+                </router-link> 
                 <a>
                     <button @click="batchDelete" :disabled="!selectedBooks.length >= 1" class="delete-books-btn v-center"> Delete Selected </button>
                 </a>
@@ -70,9 +73,11 @@ export default {
                 selectedBooks.value = []
             }
         }
+        
         const showBookUpdateForm = (id) => {
             emit('showBookUpdateForm', id)
         }
+
         const updateBook = (id) => {
              emit('bookUpdate', id)   
         }
@@ -85,7 +90,8 @@ export default {
             showBookAddForm, 
             showBookUpdateForm, 
             updateBook, 
-            deleteBook }
+            deleteBook 
+        }
     }
 }
 </script>

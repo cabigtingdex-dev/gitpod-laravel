@@ -4,6 +4,7 @@ import BookView from '../components/views/BookView.vue'
 import LoginView from '../components/views/LoginView.vue'
 import RegisterView from '../components/views/RegisterView.vue'
 import BookBatchAddView from '../components/views/BookBatchAddView.vue'
+import BookBatchUpdateView from '../components/views/BookBatchUpdateView.vue'
 
 const routes = [
     {
@@ -30,6 +31,12 @@ const routes = [
         path: '/books/batch/add',
         name: 'booksAddBatch',
         component: BookBatchAddView
+    },
+    {
+        path: '/books/batch/edit',
+        name: 'booksUpdateBatch',
+        component: BookBatchUpdateView,
+        props: true
     }
 ]
 
