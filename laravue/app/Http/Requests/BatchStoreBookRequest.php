@@ -29,7 +29,7 @@ class BatchStoreBookRequest extends FormRequest
             'newBooks.*.category' => ['required', 'string', 'max:50'],
             'newBooks.*.description' => ['required', 'string', 'max:50'],
             'newBooks.*.publishing_house' => ['required', 'string', 'max:50'],
-            'newBooks.*.publishing_date' => ['required', 'date'],
+            'newBooks.*.publishing_date' => ['required', 'date']
         ];
     }
 }
