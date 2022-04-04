@@ -83,12 +83,23 @@ export default {
         }
 
         const batchStore = async () => {
-            await batchStoreBooks(getData())
+            let data = getData()
+            if(data){
+                await batchStoreBooks(data)
+                alert("Books Added!")
+            }
         }
 
         const getData = () => {
             let data = []
             for (let form of formList.value) {
+                for(let key in form){
+                    // Make sure all fields are filled
+                    if(form[key].trim().length === 0){ 
+                        alert("Some fields are not filled!")
+                        return false 
+                    }
+                }
                 data.push(form)
             }
             return data
@@ -116,5 +127,8 @@ export default {
         background: var(--process-button);
         text-transform: capitalize;
         padding: 15px, 20px;
+    }
+    tr{
+        border-bottom: 1px solid black;
     }
 </style>

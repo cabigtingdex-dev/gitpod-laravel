@@ -19653,12 +19653,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     var selectBook = function selectBook(id) {
       if (props.selectedBook.id !== id) {
+        var index = selectedBooks.value.indexOf(id);
+        selectedBooks.value.splice(index, 1);
         emit('bookClick', id);
       }
     };
 
     var showBookAddForm = function showBookAddForm() {
       emit('showBookAddForm');
+    };
+
+    var showBookUpdateForm = function showBookUpdateForm(id) {
+      emit('showBookUpdateForm', id);
+    };
+
+    var updateBook = function updateBook(id) {
+      emit('bookUpdate', id);
     };
 
     var deleteBook = function deleteBook(id) {
@@ -19672,14 +19682,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         emit("batchDeleteClicked", selectedBooks.value);
         selectedBooks.value = [];
       }
-    };
-
-    var showBookUpdateForm = function showBookUpdateForm(id) {
-      emit('showBookUpdateForm', id);
-    };
-
-    var updateBook = function updateBook(id) {
-      emit('bookUpdate', id);
     };
 
     return {
@@ -19823,14 +19825,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var batchStore = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return batchStoreBooks(getData());
+                data = getData();
 
-              case 2:
+                if (!data) {
+                  _context.next = 5;
+                  break;
+                }
+
+                _context.next = 4;
+                return batchStoreBooks(data);
+
+              case 4:
+                alert("Books Added!");
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -19852,6 +19865,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var form = _step.value;
+
+          for (var key in form) {
+            // Make sure all fields are filled
+            if (form[key].trim().length === 0) {
+              alert("Some fields are not filled!");
+              return false;
+            }
+          }
+
           data.push(form);
         }
       } catch (err) {
@@ -22060,7 +22082,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.book-add-batch-form{\n        display: flex;\n        flex-direction: column;\n        background: var(--div-color);\n        border-radius: 10px;\n        margin: 1.2rem;\n}\n.full-width{\n        width: 100%;\n}\n.batch-add-bottom-btn{\n        color: black;\n        font-weight: bold;\n        background: var(--process-button);\n        text-transform: capitalize;\n        padding: 15px, 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.book-add-batch-form{\n        display: flex;\n        flex-direction: column;\n        background: var(--div-color);\n        border-radius: 10px;\n        margin: 1.2rem;\n}\n.full-width{\n        width: 100%;\n}\n.batch-add-bottom-btn{\n        color: black;\n        font-weight: bold;\n        background: var(--process-button);\n        text-transform: capitalize;\n        padding: 15px, 20px;\n}\ntr{\n        border-bottom: 1px solid black;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

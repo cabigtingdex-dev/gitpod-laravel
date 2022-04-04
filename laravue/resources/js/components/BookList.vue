@@ -56,11 +56,19 @@ export default {
         }
         const selectBook = (id) => {
             if(props.selectedBook.id !== id){
+                let index = selectedBooks.value.indexOf(id)
+                selectedBooks.value.splice(index, 1)
                 emit('bookClick', id)
             }
         }
         const showBookAddForm = () => {
             emit('showBookAddForm')
+        }
+        const showBookUpdateForm = (id) => {
+            emit('showBookUpdateForm', id)
+        }
+        const updateBook = (id) => {
+            emit('bookUpdate', id)   
         }
         const deleteBook = (id) => {
             if(confirm("Are you sure?")){
@@ -72,16 +80,7 @@ export default {
                 emit("batchDeleteClicked", selectedBooks.value)
                 selectedBooks.value = []
             }
-        }
-        
-        const showBookUpdateForm = (id) => {
-            emit('showBookUpdateForm', id)
-        }
-
-        const updateBook = (id) => {
-             emit('bookUpdate', id)   
-        }
-
+        }  
         return { 
             selectBook, 
             selectedBooks, 
