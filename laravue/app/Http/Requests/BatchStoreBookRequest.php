@@ -24,12 +24,12 @@ class BatchStoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'newBooks.*.title' => 'required|string|max:50',
-            'newBooks.*.author' => 'required|string|max:50',
-            'newBooks.*.category' => 'required|string|max:50',
-            'newBooks.*.description' => 'required|string|max:50',
-            'newBooks.*.publishing_house' => 'required|string|max:50',
-            'newBooks.*.publishing_date' => 'required|date',
+            'newBooks.*.title' => ['required', 'string', 'max:50'],
+            'newBooks.*.author' => ['required', 'string', 'max:50'],
+            'newBooks.*.category' => ['required', 'string', 'max:50'],
+            'newBooks.*.description' => ['required', 'string', 'max:50'],
+            'newBooks.*.publishing_house' => ['required', 'string', 'max:50'],
+            'newBooks.*.publishing_date' => ['required', 'date'],
         ];
     }
 }
