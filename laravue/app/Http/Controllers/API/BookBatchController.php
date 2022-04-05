@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BatchStoreBookRequest;
+use App\Http\Requests\BatchUpdateBookRequest;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Http\Resources\BookResource;
@@ -37,18 +38,16 @@ class BookBatchController extends Controller
     }
 
     
-    public function batchUpdate(Request $request)
+    public function batchUpdate(BatchUpdateBookRequest $request)
     {
-        $bookIds = $request->input('bookIds');
-        $booksData = $request->input('booksData');
+        $bookIds = $request->validated()['bookIds'];
+        $booksData = $request->validated()['booksData'];
 
-        $bookCount = count($bookIds);
-
-        for($i = 0; $i < $bookCount; $i++)
+        foreach ($booksData as $index => $bookData)
         {
-            $book = Book::firstOrFail($bookIds[$i]);
+            $bookToUpdate = Book::find($bookIds[$index]);
 
-            $book->update($booksData[$i]);
+            $bookToUpdate->update($booksData[$index]);
         }
 
         return BookResource::collection(Book::findMany($bookIds));
