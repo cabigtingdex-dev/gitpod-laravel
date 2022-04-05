@@ -121,12 +121,19 @@ export default {
     .full-width{
         width: 100%;
     }
+    .batch-add-bottom{
+        display: flex;
+        justify-content: center;
+        height: 2.5rem;
+        width: 100%
+    }
     .batch-add-bottom-btn{
         color: black;
         font-weight: bold;
         background: var(--process-button);
+        border-radius: 10px;
         text-transform: capitalize;
-        padding: 15px, 20px;
+        height: 20px;
     }
     tr{
         border-bottom: 1px solid black;

@@ -22082,7 +22082,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.book-add-batch-form{\n        display: flex;\n        flex-direction: column;\n        background: var(--div-color);\n        border-radius: 10px;\n        margin: 1.2rem;\n}\n.full-width{\n        width: 100%;\n}\n.batch-add-bottom-btn{\n        color: black;\n        font-weight: bold;\n        background: var(--process-button);\n        text-transform: capitalize;\n        padding: 15px, 20px;\n}\ntr{\n        border-bottom: 1px solid black;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.book-add-batch-form{\n        display: flex;\n        flex-direction: column;\n        background: var(--div-color);\n        border-radius: 10px;\n        margin: 1.2rem;\n}\n.full-width{\n        width: 100%;\n}\n.batch-add-bottom{\n        display: flex;\n        justify-content: center;\n        height: 2.5rem;\n        width: 100%\n}\n.batch-add-bottom-btn{\n        color: black;\n        font-weight: bold;\n        background: var(--process-button);\n        border-radius: 10px;\n        text-transform: capitalize;\n        height: 20px;\n}\ntr{\n        border-bottom: 1px solid black;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
