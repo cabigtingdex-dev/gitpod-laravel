@@ -5,8 +5,6 @@ tasks:
 ports:
   - port: 3000
     onOpen: open-preview
-  - port: 8000
-    visibility: public
 vscode:
     extensions:
       - felixfbecker.php-debug
