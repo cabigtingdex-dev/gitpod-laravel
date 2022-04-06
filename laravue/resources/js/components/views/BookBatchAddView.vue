@@ -33,10 +33,13 @@
 <script>
 import { ref, reactive } from 'vue'
 import useBooks from '../../composables/useBooks'
+import { useRouter } from 'vue-router'
 
 export default {
     setup(){
         const { batchStoreBooks } = useBooks()
+
+        const router = useRouter()
         
         const formList = ref([
             reactive({
@@ -87,6 +90,7 @@ export default {
             if(data){
                 await batchStoreBooks(data)
                 alert("Books Added!")
+                router.push({ name:'books'})
             }
         }
 
@@ -124,7 +128,7 @@ export default {
     .batch-add-bottom{
         display: flex;
         justify-content: center;
-        height: 2.5rem;
+        padding: 10px 0;
         width: 100%
     }
     .batch-add-bottom-btn{
@@ -133,7 +137,8 @@ export default {
         background: var(--process-button);
         border-radius: 10px;
         text-transform: capitalize;
-        height: 20px;
+        padding: 15px 10px;
+        margin: 0 10px;
     }
     tr{
         border-bottom: 1px solid black;

@@ -44,9 +44,16 @@ export default {
 
         const loadingmessage = ref("No book selected")
 
-        onMounted(() => {
-            getBooks()
+        onMounted( async () => {
+            await getBooks()
+            sortedBooks()
         })
+
+        const sortedBooks = () => {
+            books.value.sort(function(a,b){
+                return new Date(b.updated_at) - new Date(a.updated_at);
+            })
+        }
 
         const toggleBookAddForm = () => {
             showBookAddForm.value = !showBookAddForm.value
@@ -100,7 +107,8 @@ export default {
             getBooks()
         }
 
-        return { 
+        return {
+            sortedBooks,
             books, 
             book, 
             selectedBook, 

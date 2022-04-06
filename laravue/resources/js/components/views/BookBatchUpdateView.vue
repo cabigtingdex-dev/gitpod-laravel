@@ -32,12 +32,15 @@
 <script>
 import { ref, reactive, onMounted } from 'vue'
 import useBooks from '../../composables/useBooks'
+import { useRouter } from 'vue-router'
 
 export default {
     props: [ 'selectedBooks' ],
     setup(props){
         const { book, getBook, batchUpdateBooks } = useBooks()
 
+
+        const router = useRouter()
         const selectedBookList = ref([])
         const formDataList = ref({})
 
@@ -59,6 +62,8 @@ export default {
 
         const batchUpdate = async () => {
             await batchUpdateBooks(getIds(), getData())
+            alert("Books updated")
+            router.push({ name:'books'})
         }
 
         const removeEntry = (index) => {

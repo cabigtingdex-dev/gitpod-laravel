@@ -24,7 +24,7 @@
             v-for="book in books" :key="book.id" 
             class="book" :class="{ selected: selectedBook.id === book.id }">
                 <div class="book-lefthand">
-                    <input type="checkbox" class="cb-large" @click="computeSelectedBooks" name="book" :value="book.id">
+                    <input type="checkbox" class="cb-large" @click.stop="computeSelectedBooks" name="book" :value="book.id">
                     <h3> {{ book.title }} </h3>
                 </div>
                 <div class="book-righthand">
@@ -44,7 +44,6 @@ export default {
     props: [ 'books', 'selectedBook' ],
     emits: [ 'bookClick', 'showBookAddForm', 'showBookUpdateForm', 'bookUpdate', 'bookDelete', 'batchDeleteClicked' ],
     setup(props, { emit }){
-
         const selectedBooks = ref([])
         
         const computeSelectedBooks = () => {
@@ -56,10 +55,13 @@ export default {
         }
         const selectBook = (id) => {
             if(props.selectedBook.id !== id){
-                let index = selectedBooks.value.indexOf(id)
-                selectedBooks.value.splice(index, 1)
                 emit('bookClick', id)
             }
+        }
+        const removeFromSelection = (id) => {
+            let index = selectedBooks.value.indexOf(id)
+            selectedBooks.value.splice(index, 1)
+            computeSelectedBooks()
         }
         const showBookAddForm = () => {
             emit('showBookAddForm')
@@ -68,10 +70,11 @@ export default {
             emit('showBookUpdateForm', id)
         }
         const updateBook = (id) => {
-            emit('bookUpdate', id)   
+            emit('bookUpdate', id)
         }
         const deleteBook = (id) => {
             if(confirm("Are you sure?")){
+                removeFromSelection(id)
                 emit('bookDelete', id)
             }
         }

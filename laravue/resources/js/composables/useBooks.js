@@ -1,9 +1,5 @@
 import { ref } from 'vue'
 import axios from 'axios'
-import { stringify } from 'qs'
-
-const qs = require('qs')
-
 
 function useBook() {
     
@@ -42,7 +38,7 @@ function useBook() {
 
     const updateBook = async (id, formData) => {
         try {
-            let data = await axios.put("/api/books/" + id, { 
+            await axios.put("/api/books/" + id, { 
                 title: formData.get('title'),
                 author: formData.get('author'),
                 category: formData.get('category'),
@@ -50,7 +46,6 @@ function useBook() {
                 publishing_house: formData.get('publishing_house'),
                 publishing_date: formData.get('publishing_date'),
              })
-            console.log(data.data)
         } 
         catch (err) {
             console.log(err.message)
@@ -87,7 +82,6 @@ function useBook() {
     }
     const batchStoreBooks = async (newBooks) => {
         newBooks = JSON.parse(JSON.stringify(newBooks))
-        console.log(newBooks)
         try{
             await axios.post('/api/books/batch', { newBooks })
         }
@@ -96,7 +90,17 @@ function useBook() {
         }
     }
 
-    return { books, book, getBooks, getBook, insertBook, updateBook, deleteBook, batchUpdateBooks, batchStoreBooks, batchDeleteBooks }
+    return { 
+        books, 
+        book, 
+        getBooks, 
+        getBook, 
+        insertBook, 
+        updateBook, 
+        deleteBook, 
+        batchUpdateBooks, 
+        batchStoreBooks, 
+        batchDeleteBooks }
 }
 
 export default useBook
