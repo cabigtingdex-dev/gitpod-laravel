@@ -17,4 +17,8 @@ class Book extends Model
         'publishing_house',
         'publishing_date'
     ];
+
+    protected $dates = [
+        'publishing_date'
+    ];
 }
