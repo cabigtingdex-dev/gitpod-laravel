@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookCategoryTable extends Migration
+class CreateBooksCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateBookCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('book_category', function (Blueprint $table) {
-            //
+        Schema::create('books_categories', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('category_id');
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
@@ -31,8 +33,6 @@ class CreateBookCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('book_category', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('books_categories');
     }
 }
