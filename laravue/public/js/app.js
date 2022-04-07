@@ -20153,7 +20153,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return getBooks();
 
             case 2:
-              sortedBooks();
+              sortBooks();
 
             case 3:
             case "end":
@@ -20163,7 +20163,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     })));
 
-    var sortedBooks = function sortedBooks() {
+    var sortBooks = function sortBooks() {
       books.value.sort(function (a, b) {
         return new Date(b.updated_at) - new Date(a.updated_at);
       });
@@ -20335,7 +20335,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }();
 
     return {
-      sortedBooks: sortedBooks,
+      sortBooks: sortBooks,
       books: books,
       book: book,
       selectedBook: selectedBook,
@@ -20705,6 +20705,9 @@ var _hoisted_12 = {
 };
 var _hoisted_13 = ["onClick"];
 var _hoisted_14 = ["onClick"];
+var _hoisted_15 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -20753,7 +20756,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "delete-books-btn v-center"
   }, " Delete Selected ", 8
   /* PROPS */
-  , _hoisted_6)])])]), $props.books ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
+  , _hoisted_6)])])]), $props.books.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.books, function (book) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       onClick: function onClick($event) {
         return $setup.selectBook(book.id);
@@ -20795,7 +20798,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_8);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_15, " Loading... "))]);
 }
 
 /***/ }),

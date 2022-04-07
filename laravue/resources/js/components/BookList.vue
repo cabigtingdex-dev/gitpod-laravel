@@ -19,7 +19,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="book-list-container" v-if="books">
+        <ul class="book-list-container" v-if="books.length">
             <li @click="selectBook(book.id)" 
             v-for="book in books" :key="book.id" 
             class="book" :class="{ selected: selectedBook.id === book.id }">
@@ -33,6 +33,9 @@
                     <button @click.stop="deleteBook(book.id)" class="book-delete-btn"> Delete </button>
                 </div>
             </li>
+        </ul>
+        <ul v-else>
+            Loading...
         </ul>
     </div>
 </template>

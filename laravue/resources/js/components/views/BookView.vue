@@ -46,10 +46,10 @@ export default {
 
         onMounted( async () => {
             await getBooks()
-            sortedBooks()
+            sortBooks()
         })
 
-        const sortedBooks = () => {
+        const sortBooks = () => {
             books.value.sort(function(a,b){
                 return new Date(b.updated_at) - new Date(a.updated_at);
             })
@@ -108,7 +108,7 @@ export default {
         }
 
         return {
-            sortedBooks,
+            sortBooks,
             books, 
             book, 
             selectedBook, 
