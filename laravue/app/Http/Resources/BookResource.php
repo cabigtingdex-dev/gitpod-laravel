@@ -18,7 +18,7 @@ class BookResource extends JsonResource
         return [
             'title' => $this->title,
             'author' => $this->author,
-            'category' => $this->category,
+            'categories' => $this->categories->implode('category_name', ', '),
             'publishing_house' => $this->publishing_house,
             'publishing_date' => $this->publishing_date->format('m-d-Y')
         ];
