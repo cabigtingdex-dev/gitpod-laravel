@@ -21,4 +21,9 @@ class Book extends Model
     protected $dates = [
         'publishing_date'
     ];
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
